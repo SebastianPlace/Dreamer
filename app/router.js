@@ -9,6 +9,8 @@ Router.map(function() {
   this.route('goals', function() {
     this.route('new');
   });
+  this.route('login');
+  this.route('signup');
 });
 
 export default Router;
