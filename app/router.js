@@ -8,6 +8,9 @@ const Router = Ember.Router.extend({
 Router.map(function() {
   this.route('goals', function() {
     this.route('new');
+    this.route('edit',{
+      path: ":goal_id"
+    });
   });
   this.route('login');
   this.route('signup');

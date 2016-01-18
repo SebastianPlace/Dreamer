@@ -1,12 +1,14 @@
 <div class="row">
-  <h2>Add Goal:</h2>
-  <!-- {{add-goal action='createGoal'}} -->
-  {{input value=title placeholder="Title"}}
-  <button {{action "createGoal"}} name="button">Add Goal</button>
-  {{outlet}}
-</div>
-
-<div class="row">
-  <h2>All Goals:</h2>
-  {{goal-list goals=model}}
+  <div class="col-md-4">
+    <h3>All Goals:</h3>
+    <form class="form-inline">
+      <div class="form-group">
+        <label for="goalTitleInput">Goal Title: </label>
+        {{input value=title  class="form-control" id="goalTitleInput" placeholder="E.g. Learn German"}}
+      </div>
+      <button {{action "createGoal"}} type="submit" class="btn btn-success">Add Goal</button>
+    </form>
+    {{goal-list goals=model}}
+    <!-- {{add-goal action='createGoal'}} -->
+  </div>
 </div>
