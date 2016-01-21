@@ -1,4 +1,3 @@
 {{#each goals as |goal|}}
-  <p>{{goal.title}}</p>
-  {{#link-to "goals.edit" goal.id}}Edit{{/link-to}}
+  <p>{{#link-to "goals.edit" goal.id}}{{goal.title}}{{/link-to}}</p>
 {{/each}}
