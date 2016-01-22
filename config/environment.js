@@ -7,7 +7,7 @@ module.exports = function(environment) {
     contentSecurityPolicy: {
       'connect-src': "'self' https://auth.firebase.com wss://*.firebaseio.com",
       'frame-src': "'self' https://*.firebaseio.com",
-      'script-src': "'self' 'unsafe-eval' https://*.firebaseio.com"
+      'script-src': "'self' 'unsafe-inline' 'unsafe-eval' https://*.firebaseio.com"
     },
     firebase: 'https://dreamerproject.firebaseIO.com',
     baseURL: '/',
