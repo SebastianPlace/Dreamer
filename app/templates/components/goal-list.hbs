@@ -1,3 +1,7 @@
-{{#each goals as |goal|}}
-  <p>{{#link-to "goals.edit" goal.id}}{{goal.title}}{{/link-to}}</p>
-{{/each}}
+{{#if goals}}
+  {{#each goals as |goal|}}
+    <p>{{#link-to "goals.edit" goal.id}}{{goal.title}}{{/link-to}}</p>
+  {{/each}}
+{{else}}
+  <p>You have no goals.</p>
+{{/if}}

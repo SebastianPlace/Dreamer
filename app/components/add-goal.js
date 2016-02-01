@@ -2,11 +2,21 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   //define goal
-  title:null,
+  store: Ember.inject.service(),
+  title: null,
   actions:{
+    // addGoal(){
+    //   this.sendAction('createGoal',this.title);
+    // }
     addGoal(){
-      console.log(this.title);
-      this.sendAction('createGoal',this.title);
+      var store = this.get('store');
+      var goal = store.createRecord('goal',{
+        title:this.title,
+      });
+      var self = this;
+      goal.save().then(function(){
+        self.set('title','');
+      });
     }
   }
 });

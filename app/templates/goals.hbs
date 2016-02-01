@@ -1,15 +1,20 @@
 <div class="row">
-  <div class="col-md-4">
-    <h3>All Goals:</h3>
-    <form class="form-inline">
-      <div class="form-group">
-        {{input value=title  class="form-control" id="goalTitleInput" placeholder="E.g. Learn German"}}
-      </div>
-      <button {{action "createGoal"}} type="submit" class="btn btn-success">Add Goal</button>
-    </form>
-    {{goal-list goals=model}}
+  <div class="col-xs-12 col-md-4">
+    <div class="card">
+      <h3>All Goals:</h3>
+      <!-- <form class="form-inline">
+        <div class="form-group">
+          {{input value=title  class="form-control" id="goalTitleInput" placeholder="E.g. Learn German"}}
+        </div>
+        <button {{action "createGoal"}} type="submit" class="btn btn-success">Add Goal</button>
+      </form> -->
+      {{add-goal}}
+      {{goal-list goals=model}}
+    </div>
   </div>
-  <div class="col-md-8">
-    {{outlet}}
+  <div class="col-xs-12 col-md-8">
+    <div class="card">
+      {{outlet}}
+    </div>
   </div>
 </div>

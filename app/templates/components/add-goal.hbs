@@ -1,3 +1,6 @@
-<h3 class="light-orange">Add New Goal:</h3>
-{{input value=title}}
-<button {{action "addGoal"}} name="button">Add Goal</button>
+<form class="form-inline">
+  <div class="form-group">
+    {{input id="add-goal-input" value=title  class="form-control" id="goalTitleInput" placeholder="E.g. Learn German"}}
+  </div>
+  <button {{action "addGoal"}} type="submit" class="btn btn-success">Add Goal</button>
+</form>

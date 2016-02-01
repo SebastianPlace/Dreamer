@@ -7,7 +7,9 @@ export default Ember.Controller.extend({
     edit() {
       this.set('isEditing', true);
     },
-
+    cancel(){
+      this.set('isEditing', false);
+    },
     save() {
       this.set('isEditing', false);
       return true;

@@ -1,6 +1,15 @@
 @import "bootstrap";
 @import "partials/colours";
 
+body{
+  background-color: $global-background;
+}
 .light-orange{
   color: $light-orange;
+}
+.card{
+  background-color: white;
+  border: 1px solid #edeeee;
+  border-radius: 1px;
+  padding:1em;
 }
