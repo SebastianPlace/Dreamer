@@ -2,7 +2,6 @@
 @import "partials/colours";
 @import "partials/buttons";
 
-
 html, body{
   height:100%;
 }
@@ -17,19 +16,15 @@ body{
 }
 .add-goal{
   margin-bottom: 2em;
+  .input-group{
+    width:100%;
+  }
+  input.ember-text-field{
+    height:40px;
+  }
 }
-.input-group{
-  width:100%;
-}
-input.ember-text-field{
-  border-radius:3px;
-  background-color: white;
-  border-color: $border-primary;
-  box-shadow:none;
-  -webkit-box-shadow:none;
-  height:40px;
-}
-textarea.ember-text-area{
+
+input.ember-text-field, textarea.ember-text-area{
   border-radius:3px;
   background-color: white;
   border-color: $border-primary;
