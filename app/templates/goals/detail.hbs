@@ -1,0 +1,26 @@
+{{#if isEditing}}
+  <!-- Title -->
+  <div class="form-group">
+    {{input class="form-control" value=model.title placeholder="Title"}}
+  </div>
+  <!-- Description -->
+  <div class="form-group">
+    {{textarea class="form-control" value=model.description placeholder="Description"}}
+  </div>
+
+  <button class="btn btn-primary" {{action "save"}}>Save</button>
+  <button class="btn" {{action "cancel"}}>Cancel</button>
+  <button class="btn btn-danger pull-right" {{action "delete"}}><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
+
+{{else}}
+  <h2>{{model.title}}</h2>
+  <p class="text-muted"> {{moment-from-now model.dateCreated}}</p>
+
+  <!-- Description -->
+  {{#if model.description}}
+    <p>{{model.description}}</p>
+  {{else}}
+    <p>Edit description</p>
+  {{/if}}
+  <button class="btn btn-primary" {{action "edit"}}>Edit</button>
+{{/if}}

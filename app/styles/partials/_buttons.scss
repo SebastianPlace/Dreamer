@@ -1,0 +1,30 @@
+
+@mixin button-maker($color,$hover-color){
+  border-color: $color;
+  color:$color;
+  &:hover{
+    background-color: white;
+    color: $hover-color;
+    border-color: $hover-color;
+  }
+}
+.btn{
+  border-radius: 3px;
+  background-color:white;
+  border: 1px solid;
+  @include button-maker($primary-grey, $secondary-grey);
+}
+.btn-input{
+  height:40px;
+}
+
+.btn-primary{
+  @include button-maker($primary-blue, $secondary-blue);
+}
+
+.btn-success{
+  @include button-maker($primary-green, $secondary-green);
+}
+.btn-danger{
+  @include button-maker($primary-red, $secondary-red);
+}

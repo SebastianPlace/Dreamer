@@ -1,6 +1,8 @@
-<form class="form-inline">
-  <div class="form-group">
-    {{input id="add-goal-input" value=title  class="form-control" id="goalTitleInput" placeholder="E.g. Learn German"}}
+<form>
+  <div class="input-group">
+      {{input value=title  class="form-control" id="goalTitleInput" placeholder="E.g. Learn German"}}
+     <span class="input-group-btn">
+       <button {{action "addGoal"}} type="submit" class="btn btn-success btn-input">Add Goal</button>
+     </span>
   </div>
-  <button {{action "addGoal"}} type="submit" class="btn btn-success">Add Goal</button>
 </form>

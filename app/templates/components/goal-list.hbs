@@ -1,7 +1,10 @@
 {{#if goals}}
-  {{#each goals as |goal|}}
-    <p>{{#link-to "goals.edit" goal.id}}{{goal.title}}{{/link-to}}</p>
-  {{/each}}
+  <ul class="nav nav-pills nav-stacked">
+
+    {{#each goals as |goal|}}
+      <li>{{#link-to "goals.detail" goal.id}}{{goal.title}}{{/link-to}}</li>
+    {{/each}}
+  </ul>
 {{else}}
-  <p>You have no goals.</p>
+  <p class="text-center">You have no goals.</p>
 {{/if}}

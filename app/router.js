@@ -7,8 +7,7 @@ const Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('goals', function() {
-    this.route('new');
-    this.route('edit',{
+    this.route('detail',{
       path: ":goal_id"
     });
   });

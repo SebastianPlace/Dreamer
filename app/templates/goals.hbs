@@ -1,14 +1,7 @@
 <div class="row">
   <div class="col-xs-12 col-md-4">
+    {{add-goal}}
     <div class="card">
-      <h3>All Goals:</h3>
-      <!-- <form class="form-inline">
-        <div class="form-group">
-          {{input value=title  class="form-control" id="goalTitleInput" placeholder="E.g. Learn German"}}
-        </div>
-        <button {{action "createGoal"}} type="submit" class="btn btn-success">Add Goal</button>
-      </form> -->
-      {{add-goal}}
       {{goal-list goals=model}}
     </div>
   </div>
