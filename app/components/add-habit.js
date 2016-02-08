@@ -9,10 +9,12 @@ export default Ember.Component.extend({
       let store = this.get('store');
       let goal = store.peekRecord('goal', this.get('id'));
       let habit = store.createRecord('habit', {
-        goal:goal,
+        goal: goal,
         title: this.get('title')
       });
       goal.get('habits').pushObject(habit);
+      
+      //TODO change to ES6 syntax
       let self = this;
       habit.save().then(function() {
         self.set('title','');

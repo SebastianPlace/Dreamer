@@ -1,1 +1,11 @@
-<p>{{habit.title}}</p>
+{{#if isEditing}}
+  <div class="form-group">
+    {{input class="form-control" value=habit.title placeholder="Title"}}
+  </div>
+  <button class="btn btn-primary" {{action "save"}}>Save</button>
+  <button class="btn" {{action "cancel"}}>Cancel</button>
+  <button class="btn btn-danger pull-right" {{action "delete"}}><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
+
+{{else}}
+  <p {{action "edit"}}>{{habit.title}}</p>
+{{/if}}
