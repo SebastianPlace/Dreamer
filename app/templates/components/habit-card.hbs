@@ -7,5 +7,5 @@
   <button class="btn btn-danger pull-right" {{action "delete"}}><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
 
 {{else}}
-  <p {{action "edit"}}>{{habit.title}}</p>
+  <a class="habit-link" {{action "edit"}}>{{habit.title}}</a>
 {{/if}}

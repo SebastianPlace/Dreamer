@@ -23,9 +23,12 @@ body{
 }
 .habit-card{
   border: 1px solid $border-primary;
-  border-radius: 5px;
+  border-radius:1px;
   padding:0.5em;
   margin:0.5em 0 0.5em 0;
+  .habit-link{
+    cursor: pointer;
+  }
 }
 
 .add-goal, .add-habit{
