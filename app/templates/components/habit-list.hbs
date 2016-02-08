@@ -1,0 +1,8 @@
+<div class="row">
+  {{#each model.habits as |habit|}}
+    <div class="col-md-4 habit-col">
+      {{habit-card habit=habit}}
+    </div>
+    <!-- TODO display last 5 days -->
+  {{/each}}
+</div>

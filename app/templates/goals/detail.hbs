@@ -22,5 +22,13 @@
   {{else}}
     <p>Edit description</p>
   {{/if}}
+
+  {{add-habit id=model.id}}
+
+  <!-- Habit List -->
+  <h3>Habits</h3>
+  {{habit-list habits=model.habits}}
+
+
   <button class="btn btn-primary" {{action "edit"}}>Edit</button>
 {{/if}}

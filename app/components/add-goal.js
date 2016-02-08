@@ -7,12 +7,12 @@ export default Ember.Component.extend({
   classNames: ['add-goal'],
   actions:{
     addGoal(){
-      var store = this.get('store');
-      var goal = store.createRecord('goal',{
+      let store = this.get('store');
+      let goal = store.createRecord('goal',{
         title: this.title,
         dateCreated: new Date()
       });
-      var self = this;
+      let self = this;
       goal.save().then(function(){
         self.set('title','');
       });

@@ -15,7 +15,17 @@ body{
   border-radius: 1px;
   padding:1em;
 }
-.add-goal{
+.habit-col{
+  padding:0 0.5em 0 0.5em;
+}
+.habit-card{
+  border: 1px solid $border-primary;
+  border-radius: 5px;
+  padding:0.5em;
+  margin:0.5em 0 0.5em 0;
+}
+
+.add-goal, .add-habit{
   margin-bottom: 15px;
   .input-group{
     width:100%;
@@ -24,7 +34,9 @@ body{
     height:40px;
   }
 }
-
+textarea{
+  resize: vertical;
+}
 input.ember-text-field, textarea.ember-text-area{
   border-radius:3px;
   background-color: white;
