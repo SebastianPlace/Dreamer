@@ -2,20 +2,33 @@
 @mixin button-maker($color,$hover-color){
   border-color: $color;
   color:$color;
+  &:active, &:focus, &:active:focus{
+    border-color: $color;
+    color:$color;
+    background-color: white;
+    box-shadow:none;
+    -webkit-box-shadow:none;
+    outline:2px auto $color;
+  }
   &:hover{
     background-color: white;
     color: $hover-color;
     border-color: $hover-color;
   }
 }
+
 .btn{
   border-radius: 3px;
   background-color:white;
   border: 1px solid;
-  @include button-maker($primary-grey, $secondary-grey);
 }
+
 .btn-input{
   height:40px;
+}
+
+.btn-default{
+  @include button-maker($primary-grey, $secondary-grey);
 }
 
 .btn-primary{

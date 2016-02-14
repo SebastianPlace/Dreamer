@@ -6,7 +6,7 @@ moduleForComponent('habit-list', 'Integration | Component | habit list', {
 });
 
 test('it renders', function(assert) {
-  
+
   // Set any properties with this.set('myProperty', 'value');
   // Handle any actions with this.on('myAction', function(val) { ... });" + EOL + EOL +
 
@@ -14,12 +14,4 @@ test('it renders', function(assert) {
 
   assert.equal(this.$().text().trim(), '');
 
-  // Template block usage:" + EOL +
-  this.render(hbs`
-    {{#habit-list}}
-      template block text
-    {{/habit-list}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
 });
