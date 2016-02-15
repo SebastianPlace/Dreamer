@@ -8,7 +8,7 @@
     background-color: white;
     box-shadow:none;
     -webkit-box-shadow:none;
-    outline:2px auto $color;
+    // outline:2px auto $color;
   }
   &:hover{
     background-color: white;
@@ -26,7 +26,13 @@
 .btn-input{
   height:40px;
 }
-
+.btn-round{
+  border-radius: 200px;
+  padding: 0.4em 0.4em 0.4em 0.4em;
+  height:2em;
+  width:2em;
+  margin-left: 0.5em;
+}
 .btn-default{
   @include button-maker($primary-grey, $secondary-grey);
 }

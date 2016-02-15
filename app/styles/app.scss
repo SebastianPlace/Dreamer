@@ -1,13 +1,16 @@
 @import "bootstrap";
 @import "partials/colours";
 @import "partials/buttons";
-
+@import "partials/typeography";
 html, body{
   height:100%;
 }
 body{
   background-color: $global-background;
   padding-top: 5em;
+}
+*:focus, *:active, *:focus:active{
+  outline:none !important;
 }
 .card{
   background-color: white;
@@ -28,6 +31,7 @@ body{
   margin:0.5em 0 0.5em 0;
   .habit-link{
     cursor: pointer;
+    font-size: 1.4em;
   }
 }
 

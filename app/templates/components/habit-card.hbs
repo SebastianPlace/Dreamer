@@ -1,11 +1,15 @@
-{{#if isEditing}}
-  <div class="form-group">
-    {{input class="form-control" value=habit.title placeholder="Title"}}
-  </div>
-  <button class="btn btn-primary" {{action "save"}}>Save</button>
-  <button class="btn" {{action "cancel"}}>Cancel</button>
-  <button class="btn btn-danger pull-right" {{action "delete"}}><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
+<div class="habit-card">
+  {{#if isEditing}}
+    <div class="form-group">
+      {{input class="form-control" value=habit.title placeholder="Title"}}
+    </div>
+    <button class="btn btn-primary" {{action "save"}}>Save</button>
+    <button class="btn" {{action "cancel"}}>Cancel</button>
+    <button class="btn btn-danger pull-right" {{action "delete"}}><span class="glyphicon glyphicon-trash"></span></button>
 
-{{else}}
-  <a class="habit-link" {{action "edit"}}>{{habit.title}}</a>
-{{/if}}
+  {{else}}
+    <a class="habit-link" {{action "edit"}}>{{habit.title}}</a>
+    <button class="btn btn-danger btn-round pull-right" {{action "logNo"}}><span class="glyphicon glyphicon-remove"></span></button>
+    <button class="btn btn-success btn-round pull-right" {{action "logYes"}}><span class="glyphicon glyphicon-ok"></span></button>
+  {{/if}}
+</div>
