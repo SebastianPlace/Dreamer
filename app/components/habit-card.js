@@ -7,7 +7,7 @@ export default Ember.Component.extend({
   actions:{
     edit(){
       this.set('isEditing', true);
-      this.set('oldTitle',this.get('habit.title'));
+      this.set('oldTitle', this.get('habit.title'));
     },
     save(){
       this.set('isEditing', false);
