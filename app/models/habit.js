@@ -3,10 +3,15 @@ import DS from 'ember-data';
 export default DS.Model.extend({
   goal: DS.belongsTo('goal'),
   title: DS.attr('string'),
-  streak: DS.attr('number'),//can remove this and calculate it from daysCompleted
-  //activeDays - Array
-  //daysCompleted - Object list [{'23/07/15' : 'completed'},{...}]
+  dateCreated: DS.attr('date',{
+    defaultValue() { return new Date(); }
+  }),
+  days:DS.hasMany('day'),
 
-  //could track streak start and streak end as dates
-  //activeDays
+  //TODO move streak to streak component used in habit-card
+  // streak:Ember.computed('days.@each', function(){
+  //   return this.get('days');
+  // }),
+
+  //repeat:
 });

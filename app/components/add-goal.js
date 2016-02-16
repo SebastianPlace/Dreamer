@@ -15,8 +15,7 @@ export default Ember.Component.extend({
       if(this.get('isValid')){
         let store = this.get('store');
         let goal = store.createRecord('goal',{
-          title: this.title,
-          dateCreated: new Date()
+          title: this.title
         });
         let self = this;
         goal.save().then(function(){

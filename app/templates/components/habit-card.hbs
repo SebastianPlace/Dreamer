@@ -9,7 +9,18 @@
 
   {{else}}
     <a class="habit-link" {{action "edit"}}>{{habit.title}}</a>
-    <button class="btn btn-danger btn-round pull-right" {{action "logNo"}}><span class="glyphicon glyphicon-remove"></span></button>
-    <button class="btn btn-success btn-round pull-right" {{action "logYes"}}><span class="glyphicon glyphicon-ok"></span></button>
+    {{habit.streak}}
+    <div class="row day-row">
+      <!-- TODO limit to 5 days -->
+      {{#each habit.days as |day|}}
+        <div class="col-md-2">
+          {{habit-day day=day}}
+        </div>
+      {{/each}}
+    </div>
+
+    <p>{{habit.daysCompleted}}</p>
+    <button class="btn btn-danger btn-habit-log pull-right" {{action "logNo"}}><span class="glyphicon glyphicon-remove"></span></button>
+    <button class="btn btn-success btn-habit-log pull-right" {{action "logYes"}}><span class="glyphicon glyphicon-ok"></span></button>
   {{/if}}
 </div>
