@@ -24,10 +24,10 @@ export default Ember.Component.extend({
       this.set('isEditing', false);
     },
     logDay(isCompleted){
-      let store = this.get('store');
-      let habit = this.habit;
-      let today = new Date().toDateString();
-      let existing = habit.get('days').findBy('date', today);
+      const store = this.get('store');
+      const habit = this.habit;
+      const today = new Date().toDateString();
+      const existing = habit.get('days').findBy('date', today);
       if(existing === undefined){
         let day = store.createRecord('day', {
           habit: habit,
