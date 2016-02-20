@@ -20,7 +20,7 @@
     </div>
 
     <p>{{habit.daysCompleted}}</p>
-    <button class="btn btn-danger btn-habit-log pull-right" {{action "logNo"}}><span class="glyphicon glyphicon-remove"></span></button>
-    <button class="btn btn-success btn-habit-log pull-right" {{action "logYes"}}><span class="glyphicon glyphicon-ok"></span></button>
+    <button class="btn btn-danger btn-habit-log pull-right" {{action "logDay" false}}><span class="glyphicon glyphicon-remove"></span></button>
+    <button class="btn btn-success btn-habit-log pull-right" {{action "logDay" true}}><span class="glyphicon glyphicon-ok"></span></button>
   {{/if}}
 </div>

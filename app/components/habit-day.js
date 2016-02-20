@@ -2,9 +2,9 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   classNames:['day-circle'],
-  classNameBindings: ['day.completed:complete:incomplete'],
+  classNameBindings: ['day.isCompleted:complete:incomplete'],
 
   click(){
-    console.log(this.habit.completed);
+    console.log(this.day.get('isCompleted'));
   }
 });

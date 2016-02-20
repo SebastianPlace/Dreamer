@@ -23,30 +23,25 @@ export default Ember.Component.extend({
       this.set('habit.title', this.get('oldTitle'));
       this.set('isEditing', false);
     },
-    //TODO refactor logNo and logYes into one function with 'completed' arg
-    logNo(){
+    logDay(isCompleted){
       let store = this.get('store');
       let habit = this.habit;
-      let day = store.createRecord('day', {
-        habit: habit,
-        completed: false
-      });
-      habit.get('days').pushObject(day);
-      day.save().then(function() {
-        return habit.save();
-      });
-    },
-    logYes(){
-      let store = this.get('store');
-      let habit = this.habit;
-      let day = store.createRecord('day', {
-        habit: habit,
-        completed: true
-      });
-      habit.get('days').pushObject(day);
-      day.save().then(function() {
-        return habit.save();
-      });
+      let today = new Date().toDateString();
+      let existing = habit.get('days').findBy('date', today);
+      if(existing === undefined){
+        let day = store.createRecord('day', {
+          habit: habit,
+          isCompleted: isCompleted,
+          date: today
+        });
+        habit.get('days').pushObject(day);
+        day.save().then(function() {
+          return habit.save();
+        });
+      }else if(existing && isCompleted !== existing.get('isCompleted')){
+        existing.set('isCompleted', isCompleted);
+        existing.save();
+      }
     }
   }
 });
