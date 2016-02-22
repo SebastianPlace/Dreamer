@@ -9,12 +9,16 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      {{#link-to "application" class="navbar-brand"}}Dreamer{{/link-to}}
+      {{#link-to "goals" class="navbar-brand"}}Dreamer{{/link-to}}
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="collapsible-container">
-      <button type="button" class="btn btn-default navbar-btn navbar-right">Sign in</button>
+      <div class="navbar-right navbar-text navbar-profile-group">
+        <img src={{session.currentUser.profileImageURL}} alt="Your profile picture." class="img-circle">
+        {{session.currentUser.displayName}}
+      </div>
+      <button {{action "signOut"}} class="btn btn-default navbar-btn navbar-right">Sign out</button>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>

@@ -10,6 +10,9 @@ module.exports = function(environment) {
       'script-src': "'self' 'unsafe-inline' 'unsafe-eval' https://*.firebaseio.com"
     },
     firebase: 'https://dreamerproject.firebaseIO.com',
+    torii: {
+      sessionServiceName: 'session'
+    },
     baseURL: '/',
     locationType: 'auto',
     EmberENV: {

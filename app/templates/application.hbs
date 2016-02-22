@@ -1,4 +1,24 @@
-{{nav-bar}}
-<div class="container">
-  {{outlet}}
-</div>
+
+{{#if session.isAuthenticated}}
+  {{nav-bar signOut="signOut"}}
+  <div class="container">
+    {{outlet}}
+  </div>
+{{else}}
+  <div class="container">
+    <div class="row">
+      <div class="centered card text-center">
+        <h1>Dreamer</h1>
+        <ul class="nav nav-pills nav-justified">
+          <li role="presentation" class="{{if isSignupTabActive 'active'}}"><a href="#" {{action "setTab" true}}>Sign Up</a></li>
+          <li role="presentation" class="{{unless isSignupTabActive 'active'}}"><a href="#" {{action "setTab" false}}>Log In</a></li>
+        </ul>
+        {{#if isSignupTabActive}}
+          <button {{action "signIn" "google"}} class="btn btn-default">Sign up with Google</button>
+        {{else}}
+          <button {{action "signIn" "google"}} class="btn btn-default">Log in with Google</button>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+{{/if}}
