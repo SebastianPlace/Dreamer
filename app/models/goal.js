@@ -7,5 +7,6 @@ export default DS.Model.extend({
     defaultValue() { return new Date(); }
   }),
   dateUpdated: DS.attr('date'),
-  habits: DS.hasMany('habit')
+  habits: DS.hasMany('habit'),
+  user: DS.belongsTo('user')
 });

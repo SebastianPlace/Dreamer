@@ -20,11 +20,8 @@ export default Ember.Component.extend({
           title: this.get('title')
         });
         goal.get('habits').pushObject(habit);
-
-        //TODO change to ES6 syntax
-        let self = this;
-        habit.save().then(function() {
-          self.set('title','');
+        habit.save().then(()=>{
+          this.set('title','');
           return goal.save();
         });
       }

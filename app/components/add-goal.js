@@ -2,6 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   store: Ember.inject.service(),
+  session: Ember.inject.service(),
   classNames: ['add-goal'],
   isValid: Ember.computed('title',function(){
     if(this.get('title')){
@@ -12,16 +13,19 @@ export default Ember.Component.extend({
 
   actions:{
     addGoal(){
-      if(this.get('isValid')){
-        let store = this.get('store');
-        let goal = store.createRecord('goal',{
-          title: this.title
-        });
-        let self = this;
-        goal.save().then(function(){
-          self.set('title','');
-        });
-      }
+      const store = this.get('store');
+      const currentUserId = this.get('session.currentUser.id');
+      store.query('user', { filter: { uid:currentUserId  }}).then((user)=>{
+        if(this.get('isValid')){
+          const goal = store.createRecord('goal',{
+            title: this.title,
+            user: user.objectAt(0)
+          });
+          goal.save().then(()=>{
+            this.set('title','');
+          });
+        }
+      });
     }
   }
 });

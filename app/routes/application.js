@@ -12,7 +12,15 @@ export default Ember.Route.extend({
   actions: {
     signIn: function(provider) {
       this.get("session").open("firebase", { provider: provider}).then((data)=>{
-        console.log(data.currentUser);
+        this.store.query('user', { filter: { uid: data.currentUser.id }}).then((existing)=>{
+          const user = existing.objectAt(0);
+          if(!user){
+            this.store.createRecord('user',{
+              uid: data.currentUser.id,
+              displayName: data.currentUser.displayName
+            }).save();
+          }
+        });
         this.transitionTo('goals');
       });
     },
