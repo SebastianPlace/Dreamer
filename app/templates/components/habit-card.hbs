@@ -14,7 +14,7 @@
       <!-- TODO limit to 5 days -->
       {{#each habit.days as |day|}}
         <div class="col-md-2">
-          {{habit-day day=day}}
+          {{habit-day day=day tooltipContent=day.date}}
         </div>
       {{/each}}
     </div>
