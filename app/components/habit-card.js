@@ -5,7 +5,6 @@ export default Ember.Component.extend({
   classNames: ['col-md-4','habit-col'],
   isEditing: false,
   oldTitle:'',
-
   actions:{
     edit(){
       this.set('isEditing', true);

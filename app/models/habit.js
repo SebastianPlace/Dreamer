@@ -7,7 +7,7 @@ export default DS.Model.extend({
   dateCreated: DS.attr('date',{
     defaultValue() { return new Date(); }
   }),
-  days:DS.hasMany('day'),
+  days: DS.hasMany('day'),
 
   //TODO move streak to streak component used in habit-card
   // streak:Ember.computed('days.@each', function(){
