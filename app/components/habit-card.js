@@ -4,11 +4,9 @@ export default Ember.Component.extend({
   store: Ember.inject.service(),
   classNames: ['col-md-4','habit-col'],
   isEditing: false,
-  oldTitle:'',
   actions:{
     edit(){
       this.set('isEditing', true);
-      this.set('oldTitle', this.get('habit.title'));
     },
     save(){
       this.set('isEditing', false);
@@ -16,10 +14,18 @@ export default Ember.Component.extend({
       return this.habit.save();
     },
     delete(){
-      this.habit.destroyRecord();
+      const habit = this.habit;
+      const deletions = habit.get('days').map((day) => {
+        return day.destroyRecord();
+      });
+      Ember.RSVP.all(deletions).then(() => {
+        return habit.destroyRecord();
+      }).catch((err) => {
+        console.log(err);
+      });
     },
     cancel(){
-      this.set('habit.title', this.get('oldTitle'));
+      this.habit.rollbackAttributes();
       this.set('isEditing', false);
     },
     logDay(isCompleted){

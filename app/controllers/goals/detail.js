@@ -2,21 +2,15 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
   isEditing: false,
-  oldTitle:'',
   actions:{
-    delete(){
-      this.model.destroyRecord();
-      this.transitionToRoute('goals');
-    },
-    edit() {
-      this.set('oldTitle', this.get('model.title'));
+    edit(){
       this.set('isEditing', true);
     },
     cancel(){
-      this.set('model.title', this.get('oldTitle'));
+      this.model.rollbackAttributes();
       this.set('isEditing', false);
     },
-    save() {
+    save(){
       this.set('isEditing', false);
       return true;
     },
