@@ -8,11 +8,13 @@ export default Ember.Component.extend({
     edit(){
       this.set('isEditing', true);
     },
+
     save(){
       this.set('isEditing', false);
       this.set('oldTitle', '');
       return this.habit.save();
     },
+
     delete(){
       const habit = this.habit;
       const deletions = habit.get('days').map((day) => {
@@ -24,10 +26,12 @@ export default Ember.Component.extend({
         console.log(err);
       });
     },
+
     cancel(){
       this.habit.rollbackAttributes();
       this.set('isEditing', false);
     },
+
     logDay(isCompleted){
       const store = this.get('store');
       const habit = this.habit;

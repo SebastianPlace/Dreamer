@@ -4,6 +4,7 @@ export default Ember.Route.extend({
 
   actions: {
     save(){
+      console.log("LA");
       const controller = this.get('controller');
       const goal = controller.get('model');
       return goal.save();

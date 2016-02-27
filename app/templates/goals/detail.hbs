@@ -1,13 +1,14 @@
 {{#if isEditing}}
   <!-- Title -->
   <div class="form-group">
-    {{input class="form-control" value=model.title placeholder="Title"}}
+    <label for="goal-title">Goal Title</label>
+    {{input class="form-control" value=model.title placeholder="Title" id="goal-title" }}
   </div>
   <!-- Description -->
   <div class="form-group">
-    {{textarea class="form-control" value=model.description placeholder="Description"}}
+    <label for="goal-description">Goal Description</label>
+    {{textarea class="form-control" value=model.description rows="6" placeholder="Description" id="goal-description" }}
   </div>
-
   <button class="btn btn-primary" {{action "save"}}>Save</button>
   <button class="btn btn-default" {{action "cancel"}}>Cancel</button>
   <button class="btn btn-danger pull-right" {{action "delete"}}><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
