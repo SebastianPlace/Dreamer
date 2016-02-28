@@ -1,7 +1,6 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  store: Ember.inject.service(),
   classNames: ['col-md-4','habit-col'],
   isEditing: false,
   actions:{
@@ -33,24 +32,7 @@ export default Ember.Component.extend({
     },
 
     logDay(isCompleted){
-      const store = this.get('store');
-      const habit = this.habit;
-      const today = new Date().toDateString();
-      const existing = habit.get('days').findBy('date', today);
-      if(existing === undefined){
-        let day = store.createRecord('day', {
-          habit: habit,
-          isCompleted: isCompleted,
-          date: today
-        });
-        habit.get('days').pushObject(day);
-        day.save().then(function() {
-          return habit.save();
-        });
-      }else if(existing && isCompleted !== existing.get('isCompleted')){
-        existing.set('isCompleted', isCompleted);
-        existing.save();
-      }
+      this.get('logDay')(isCompleted, this.habit);
     }
   }
 });

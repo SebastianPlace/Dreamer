@@ -25,26 +25,28 @@
   {{/if}}
 
   <!-- Steps / Checklist -->
-  <h3>Steps</h3>
+  <!-- <h3>Steps</h3>
   {{add-step goalId=model.id}}
   <div class="step-list">
     {{#each model.steps as |step|}}
       <div class="step-list-item {{if step.isDone 'step-done'}}">
-        {{input type="checkbox" name="isDone" checked=step.isDone}}
+        {{input type="checkbox" name="isDone" checked=step.isDone}} -->
+
         <!-- {{#if step.isDone}}
           <button {{action "check"}} class="btn btn-default"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
         {{else}}
           <button {{action "check"}} class="btn btn-default"><span aria-hidden="true"></span></button>
         {{/if}} -->
-        {{step.title}}
+
+        <!-- {{step.title}}
       </div>
     {{/each}}
-  </div>
+  </div> -->
 
   <!-- Habit List -->
   <h3>Habits</h3>
   {{add-habit goalId=model.id}}
-  {{habit-list habits=model.habits}}
+  {{habit-list habits=model.habits logDay=(action 'logDay')}}
 
 
   <button class="btn btn-primary" {{action "edit"}}>Edit Goal</button>
