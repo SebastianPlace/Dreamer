@@ -8,5 +8,6 @@ export default DS.Model.extend({
   }),
   dateUpdated: DS.attr('date'),
   habits: DS.hasMany('habit'),
+  steps: DS.hasMany('step'),
   user: DS.belongsTo('user')
 });

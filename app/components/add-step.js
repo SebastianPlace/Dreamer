@@ -11,16 +11,16 @@ export default Ember.Component.extend({
   }),
 
   actions:{
-    addHabit(){
+    addStep(){
       if(this.get('isValid')){
         const store = this.get('store');
         const goal = store.peekRecord('goal', this.get('goalId'));
-        const habit = store.createRecord('habit', {
+        const step = store.createRecord('step', {
           goal: goal,
           title: this.get('title')
         });
-        goal.get('habits').pushObject(habit);
-        habit.save().then(()=>{
+        goal.get('steps').pushObject(step);
+        step.save().then(()=>{
           this.set('title','');
           return goal.save();
         });
