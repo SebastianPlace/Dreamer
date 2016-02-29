@@ -1,4 +1,3 @@
-
 @mixin button-maker($color,$hover-color){
   border-color: $color;
   color:$color;
@@ -40,3 +39,28 @@
 .btn-danger{
   @include button-maker($primary-red, $secondary-red);
 }
+
+.day-list {text-align:justify;}
+.day-list > a {
+  display: inline-block;
+  border-radius: 200px;
+  border: 1px solid $primary-grey;
+  width: 1.7em;
+  height: 1.7em;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  line-height: 1.6;
+  color: $primary-grey;
+  &.day-active{
+    border: 2px solid $secondary-blue;
+    color: $secondary-blue;
+    font-weight: bold;
+  }
+  &:hover{
+    border: 2px solid $secondary-grey;
+    color: $secondary-grey;
+    font-weight: bold;
+  }
+}
+.day-list:after { content:' '; display:inline-block; width: 100%; height: 0 }

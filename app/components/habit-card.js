@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  classNames: ['col-md-4','habit-col'],
+  classNames: ['col-md-6','habit-col'],
   isEditing: false,
   actions:{
     edit(){
@@ -33,6 +33,6 @@ export default Ember.Component.extend({
 
     logDay(isCompleted){
       this.get('logDay')(isCompleted, this.habit);
-    }
+    },
   }
 });

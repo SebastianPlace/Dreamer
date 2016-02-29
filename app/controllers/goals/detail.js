@@ -31,6 +31,6 @@ export default Ember.Controller.extend({
         existing.set('isCompleted', isCompleted);
         existing.save();
       }
-    }
+    },
   }
 });
