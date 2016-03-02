@@ -19,7 +19,8 @@
 
   <!-- Description -->
   {{#if model.description}}
-    <p>{{model.description}}</p>
+    <!-- <p>{{model.description}}</p> -->
+    {{markdown-to-html markdown=model.description}}
   {{else}}
     <p>Edit description</p>
   {{/if}}

@@ -19,6 +19,9 @@ body{
   border-radius: 2px;
   padding:1em;
 }
+.goal-list-card{
+  margin-bottom: 1em;
+}
 .habit-list{
   padding:1em;
 }
@@ -33,9 +36,13 @@ body{
   .habit-link{
     cursor: pointer;
     font-size: 1.2em;
+    margin-bottom: 1.5em;
+  }
+  .habit-log-btn-group{
+    margin-top: 1em;
   }
   .btn-habit-log{
-    margin-left: 0.5em;
+    margin-right: 0.2em;
   }
 
   .day-circle{

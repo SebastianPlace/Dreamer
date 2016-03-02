@@ -25,9 +25,9 @@
 
   {{else}}
     <a class="habit-link" {{action "edit"}}>{{habit.title}}</a>
-    <div><label>Streak:</label> {{habit.streak}}</div>
-    <div><label>Total Successful:</label></div>
-
+    <h5>Streak: 2 Days</h5>
+    <!-- <h5>Total Successful: 3 Days</h5> -->
+    <h5>Logged Days: </h5>
     <div class="row day-row">
       <!-- TODO limit to 5 days -->
       {{#each habit.days as |day|}}
@@ -36,9 +36,10 @@
         </div>
       {{/each}}
     </div>
+    <div class="habit-log-btn-group">
+      <button class="btn btn-success btn-habit-log" {{action "logDay" true}}>Done <span class="glyphicon glyphicon-ok"></span></button>
+      <button class="btn btn-danger btn-habit-log" {{action "logDay" false}}>Not Done <span class="glyphicon glyphicon-remove"></span></button>
+    </div>
 
-    <p>{{habit.daysCompleted}}</p>
-    <button class="btn btn-danger btn-habit-log pull-right" {{action "logDay" false}}><span class="glyphicon glyphicon-remove"></span></button>
-    <button class="btn btn-success btn-habit-log pull-right" {{action "logDay" true}}><span class="glyphicon glyphicon-ok"></span></button>
   {{/if}}
 </div>
