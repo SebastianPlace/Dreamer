@@ -3,6 +3,17 @@ import Ember from 'ember';
 export default Ember.Component.extend({
   classNames: ['col-md-6','habit-col'],
   isEditing: false,
+  today: new Date().toDateString(),
+  //TODO user this function to style habit when it is completed for the day
+  isCompleted: Ember.computed.bool('habit.days', function(){
+    const days = this.get('habit.days');
+    const currentDay= new Date().toDateString();
+    const today = days.filterBy('date',currentDay);
+    if(today.get('isCompleted')){
+      return true;
+    }
+  }),
+
   actions:{
     edit(){
       this.set('isEditing', true);
@@ -32,6 +43,7 @@ export default Ember.Component.extend({
     },
 
     logDay(isCompleted){
+      console.log(this.isCompleted);
       this.get('logDay')(isCompleted, this.habit);
     },
   }

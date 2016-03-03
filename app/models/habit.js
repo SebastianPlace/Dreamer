@@ -9,7 +9,8 @@ export default DS.Model.extend({
   }),
   days: DS.hasMany('day'),
   activeDays: DS.attr(),
-  
+  currentStreak: DS.attr('number'),
+  targetStreak: DS.attr('number'),
   //TODO move streak to streak component used in habit-card
   // streak:Ember.computed('days.@each', function(){
   //   return this.get('days');
