@@ -3,16 +3,25 @@ import Ember from 'ember';
 export default Ember.Component.extend({
   classNames: ['col-md-6','habit-col'],
   isEditing: false,
-  today: new Date().toDateString(),
-  //TODO user this function to style habit when it is completed for the day
-  isCompleted: Ember.computed.bool('habit.days', function(){
-    const days = this.get('habit.days');
-    const currentDay= new Date().toDateString();
-    const today = days.filterBy('date',currentDay);
-    if(today.get('isCompleted')){
-      return true;
-    }
-  }),
+  //TODO use this function to style habit when it is completed for the day
+  //TODO change to if today on datepicker, is complete.
+  // isCompleted: Ember.computed.bool('habit.days', function(){
+  //   const days = this.get('habit.days');
+  //   const currentDay= new Date().toDateString();
+  //   const today = days.filterBy('date',currentDay);
+  //   if(today.get('isCompleted')){
+  //     return true;
+  //   }
+  // }),
+  // convertedDays: Ember.computed('selectedDays', function(){
+  //   let selectedDays = this.get('selectedDays');
+  //   if(selectedDays){
+  //     for(let i=0; i<selectedDays.length; i++){
+  //       selectedDays[i] = selectedDays[i].toDateString();
+  //       console.log(selectedDays[i]);
+  //     }
+  //   }
+  // }),
 
   actions:{
     edit(){
@@ -43,7 +52,6 @@ export default Ember.Component.extend({
     },
 
     logDay(isCompleted){
-      console.log(this.isCompleted);
       this.get('logDay')(isCompleted, this.habit);
     },
   }

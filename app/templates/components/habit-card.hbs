@@ -26,11 +26,8 @@
   {{else}}
     <a class="habit-link" {{action "edit"}}>{{habit.title}}</a>
     <h5>Streak: 2 Days</h5>
-    {{#if isCompleted}}
-      <p>COMPLETED</p>
-      {{isCompleted}}
-    {{/if}}
-    <!-- <h5>Total Successful: 3 Days</h5> -->
+    <!-- {{bootstrap-datepicker-inline value=selectedDays multidate=true todayHighlight=true weekStart=1}}
+    <p>{{selectedDays}}</p> -->
     <h5>Logged Days: </h5>
     <div class="row day-row">
       {{day-list days=habit.days}}

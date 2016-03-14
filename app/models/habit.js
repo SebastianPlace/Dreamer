@@ -7,14 +7,13 @@ export default DS.Model.extend({
   dateCreated: DS.attr('date',{
     defaultValue() { return new Date(); }
   }),
+  //days: DS.attr(),
   days: DS.hasMany('day'),
-  activeDays: DS.attr(),
-  currentStreak: DS.attr('number'),
-  targetStreak: DS.attr('number'),
+  // days: DS.attr('dates'),
+  // activeDays: DS.attr(),
+  // currentStreak: DS.attr('number'),
   //TODO move streak to streak component used in habit-card
   // streak:Ember.computed('days.@each', function(){
   //   return this.get('days');
   // }),
-
-  //repeat:
 });

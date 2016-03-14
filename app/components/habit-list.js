@@ -5,6 +5,6 @@ export default Ember.Component.extend({
   actions:{
     logDay(isCompleted, habit){
       this.get('logDay')(isCompleted, habit);
-    }
+    },
   }
 });
