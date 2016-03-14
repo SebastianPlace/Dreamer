@@ -14,8 +14,6 @@
   <button class="btn btn-default" {{action "cancel"}}>Cancel</button>
   <button class="btn btn-danger pull-right" {{action "delete"}}><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
 {{else}}
-  <button class="btn btn-primary pull-right" {{action "edit"}}>Edit Goal</button>
-
   <h2>{{model.title}}</h2>
   <p class="text-muted"> {{moment-from-now model.dateCreated}}</p>
   {{#if model.description}}
@@ -29,10 +27,7 @@
   {{add-step goalId=model.id}}
   <div class="step-list">
     {{#each model.steps as |step|}}
-      <div class="step-list-item {{if step.isDone 'step-done'}}">
-        {{input type="checkbox" name="isDone" checked=step.isDone}}
-        {{step.title}}
-      </div>
+      {{step-item step=step deleteStep=(action 'deleteStep')}}
     {{/each}}
   </div>
 
@@ -40,6 +35,5 @@
   <h3>Habits</h3>
   {{add-habit goalId=model.id}}
   {{habit-list habits=model.habits logDay=(action 'logDay')}}
-
   <button class="btn btn-primary" {{action "edit"}}>Edit Goal</button>
 {{/if}}

@@ -1,0 +1,14 @@
+<div class="step-list-item {{if step.isDone 'step-done'}}">
+  {{input type="checkbox" name="isDone" checked=step.isDone}}
+  {{step.title}}
+  <button class="btn btn-icon-only" {{action "delete"}}><span class="glyphicon glyphicon-remove"></span></button>
+  <!-- {{#if isEditing}}
+    <a {{action "save" on='blur'}}>
+      {{input class="form-control" value=step.title}}
+    </a>
+  {{else}}
+    <a {{action "edit" on='click'}}>
+      {{step.title}}
+    </a>
+  {{/if}} -->
+</div>
