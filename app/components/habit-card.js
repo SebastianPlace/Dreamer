@@ -22,6 +22,13 @@ export default Ember.Component.extend({
   //     }
   //   }
   // }),
+  
+  // streak: Ember.computed('habit.days', function(){
+  //   let days = this.get('habit.days');
+  //   let completedDays = days.filterBy('isCompleted', true);
+  //   console.log(completedDays);
+  //   return completedDays.length;
+  // }),
 
   actions:{
     edit(){
