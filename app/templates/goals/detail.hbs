@@ -25,11 +25,11 @@
   <!-- Steps / Checklist -->
   <h3>Steps / Checklist</h3>
   {{add-step goalId=model.id}}
-  <div class="step-list">
+  <ul class="step-list">
     {{#each model.steps as |step|}}
       {{step-item step=step deleteStep=(action 'deleteStep')}}
     {{/each}}
-  </div>
+  </ul>
 
   <!-- Habit List -->
   <h3>Habits</h3>

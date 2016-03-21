@@ -69,15 +69,27 @@ body{
   }
 }
 .step-list{
-
+  list-style-type: none;
+  padding-left: 0;
 }
-.step-list-item{
-  padding: 0.5em;
-  &.step-done{
+li.step-list-item{
+  vertical-align: middle;
+  width: 100%;
+  padding: 0.7em;
+  &.step-done a{
     text-decoration: line-through;
   }
   input.ember-checkbox{
     margin-right:0.5em;
+  }
+  a{
+    cursor: pointer;
+  }
+  input.step-input{
+    vertical-align: middle;
+    width:60%;
+    max-height:33px;
+    padding:6px 6px 6px 6px;
   }
 }
 textarea{
@@ -86,7 +98,7 @@ textarea{
 input.ember-text-field, textarea.ember-text-area{
   border-radius:3px;
   background-color: white;
-  border-color: $border-primary;
+  border: 1px solid $border-primary;
   box-shadow:none;
   -webkit-box-shadow:none;
 }

@@ -17,6 +17,10 @@ export default Ember.Component.extend({
     delete(){
       this.get('deleteStep')(this.get('step'));
     },
+    cancel(){
+      this.step.rollbackAttributes();
+      this.set('isEditing', false);
+    }
   }
 
 });
