@@ -26,16 +26,16 @@
   {{else}}
     <a class="habit-link" {{action "edit"}}>{{habit.title}}</a>
     <!-- <h5>Streak: {{streak}} Days</h5> -->
-    <!-- {{bootstrap-datepicker-inline value=selectedDays multidate=true todayHighlight=true weekStart=1}}
-    <p>{{selectedDays}}</p> -->
-    <h5>Logged Days: </h5>
+    {{bootstrap-datepicker-inline value=habit.days multidate=true todayHighlight=true todayBtn=true weekStart=1}}
+
+    <!-- <h5>Logged Days: </h5>
     <div class="row day-row">
       {{day-list days=habit.days}}
     </div>
     <div class="habit-log-btn-group">
       <button class="btn btn-success btn-habit-log" {{action "logDay" true}}>Done <span class="glyphicon glyphicon-ok"></span></button>
       <button class="btn btn-danger btn-habit-log" {{action "logDay" false}}>Not Done <span class="glyphicon glyphicon-remove"></span></button>
-    </div>
+    </div> -->
 
   {{/if}}
 </div>

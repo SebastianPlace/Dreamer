@@ -27,7 +27,8 @@ export default Ember.Component.extend({
         const habit = store.createRecord('habit', {
           goal: goal,
           title: this.get('title'),
-          activeDays: activeDays
+          activeDays: activeDays,
+          days: null
         });
         goal.get('habits').pushObject(habit);
         habit.save().then(()=>{
