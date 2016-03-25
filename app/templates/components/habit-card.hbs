@@ -20,11 +20,11 @@
     </div>
 
     <button class="btn btn-primary" {{action "save"}}>Save</button>
-    <button class="btn" {{action "cancel"}}>Cancel</button>
+    <button class="btn btn-default" {{action "cancel"}}>Cancel</button>
     <button class="btn btn-danger pull-right" {{action "delete"}}><span class="glyphicon glyphicon-trash"></span></button>
 
   {{else}}
     <a class="habit-link" {{action "edit"}}>{{habit.title}}</a>
-    {{bootstrap-datepicker-inline value=habit.days multidate=true todayHighlight=true todayBtn=true weekStart=1}}
+    {{bootstrap-datepicker-inline value=habit.days multidate=true todayHighlight=true endDate=today todayBtn=true weekStart=1}}
   {{/if}}
 </div>

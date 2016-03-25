@@ -1,0 +1,24 @@
+.step-list{
+  list-style-type: none;
+  padding-left: 0;
+}
+li.step-list-item{
+  vertical-align: middle;
+  width: 100%;
+  padding: 0.7em;
+  &.step-done a{
+    text-decoration: line-through;
+  }
+  input.ember-checkbox{
+    margin-right:0.5em;
+  }
+  a{
+    cursor: pointer;
+  }
+  input.step-input{
+    vertical-align: middle;
+    width:60%;
+    max-height:33px;
+    padding:6px 6px 6px 6px;
+  }
+}

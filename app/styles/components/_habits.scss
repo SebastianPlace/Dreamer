@@ -1,0 +1,17 @@
+.habit-list{
+  padding:1em;
+}
+.habit-col{
+  padding:0 0.5em 0 0.5em;
+}
+.habit-card{
+  border: 1px solid $border-primary;
+  border-radius:3px;
+  padding:0.6em;
+  margin:0.5em 0 0.5em 0;
+  .habit-link{
+    cursor: pointer;
+    font-size: 1.2em;
+    margin-bottom: 1.5em;
+  }
+}

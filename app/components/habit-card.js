@@ -13,13 +13,13 @@ export default Ember.Component.extend({
   //     return true;
   //   }
   // }),
-
+  today: new Date(),
   saveHabit: function(){
     Ember.run.next(()=>{
       this.habit.save();
     });
   },
-  
+
   datesDidChange : function() {
     //wait for habit attrs to change before save is called
     //throttle prevents habit from being saved before the model is habit attributes have changed
