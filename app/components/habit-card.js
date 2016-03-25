@@ -14,28 +14,12 @@ export default Ember.Component.extend({
   //   }
   // }),
 
-  // convertedDays: Ember.computed('selectedDays', function(){
-  //   let selectedDays = this.get('selectedDays');
-  //   if(selectedDays){
-  //     for(let i=0; i<selectedDays.length; i++){
-  //       selectedDays[i] = selectedDays[i].toDateString();
-  //       console.log(selectedDays[i]);
-  //     }
-  //   }
-  // }),
-
-  // streak: Ember.computed('habit.days', function(){
-  //   let days = this.get('habit.days');
-  //   let completedDays = days.filterBy('isCompleted', true);
-  //   console.log(completedDays);
-  //   return completedDays.length;
-  // }),
-
   saveHabit: function(){
     Ember.run.next(()=>{
       this.habit.save();
     });
   },
+  
   datesDidChange : function() {
     //wait for habit attrs to change before save is called
     //throttle prevents habit from being saved before the model is habit attributes have changed
@@ -43,7 +27,6 @@ export default Ember.Component.extend({
       Ember.run.throttle(this, this.saveHabit, 250);
     }
   }.observes('habit.hasDirtyAttributes'),
-
 
   actions:{
     edit(){
@@ -57,26 +40,12 @@ export default Ember.Component.extend({
     },
 
     delete(){
-      //This is the old delete method using days as objects
-      // const habit = this.habit;
-      // const deletions = habit.get('days').map((day) => {
-      //   return day.destroyRecord();
-      // });
-      // Ember.RSVP.all(deletions).then(() => {
-      //   return habit.destroyRecord();
-      // }).catch((err) => {
-      //   console.log(err);
-      // });
       this.habit.destroyRecord();
     },
 
     cancel(){
       this.habit.rollbackAttributes();
       this.set('isEditing', false);
-    },
-
-    logDay(isCompleted){
-      this.get('logDay')(isCompleted, this.habit);
     },
   }
 });

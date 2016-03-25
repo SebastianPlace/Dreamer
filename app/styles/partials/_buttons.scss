@@ -40,6 +40,7 @@
   @include button-maker($primary-red, $secondary-red);
 }
 
+//TODO move to styles/Components/active-days
 .day-list {text-align:justify;}
 .day-list > a {
   display: inline-block;

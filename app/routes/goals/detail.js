@@ -1,10 +1,8 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-
   actions: {
     save(){
-      console.log("LA");
       const controller = this.get('controller');
       const goal = controller.get('model');
       return goal.save();
@@ -13,25 +11,14 @@ export default Ember.Route.extend({
       const controller = this.get('controller');
       const goal = controller.get('model');
       const deletions = goal.get('habits').map((habit) => {
-        return this.send('destroyHabit',habit);
+        return habit.destroyRecord();
       });
       Ember.RSVP.all(deletions).then(() => {
         return goal.destroyRecord();
       }).catch((err) => {
-        console.log(err);
+        console.error(err);
       });
       this.transitionTo('goals');
     },
-    destroyHabit(habit){
-      const deletions = habit.get('days').map((day) => {
-        return day.destroyRecord();
-      });
-      Ember.RSVP.all(deletions).then(() => {
-        return habit.destroyRecord();
-      }).catch((err) => {
-        console.log(err);
-      });
-    }
   },
-
 });

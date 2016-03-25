@@ -39,26 +39,7 @@ body{
     font-size: 1.2em;
     margin-bottom: 1.5em;
   }
-  .habit-log-btn-group{
-    margin-top: 1em;
-  }
-  .btn-habit-log{
-    margin-right: 0.2em;
-  }
-
-  .day-circle{
-    height:1.3em;
-    width:1.3em;
-    border-radius: 200px;
-  }
-  .complete{
-    background-color: $primary-green;
-  }
-  .incomplete{
-    background-color: $primary-red;
-  }
 }
-
 .add-goal, .add-item{
   margin-bottom: 15px;
   .input-group{

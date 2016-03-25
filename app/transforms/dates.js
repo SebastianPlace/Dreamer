@@ -8,7 +8,6 @@ export default DS.Transform.extend({
         serialized[i] = new Date(Ember.Date.parse(serialized[i]));
       }
     }
-    console.log(serialized);
     return serialized;
   },
   serialize(deserialized) {
@@ -18,7 +17,6 @@ export default DS.Transform.extend({
         deserialized[i] = deserialized[i].toISOString();
       }
     }
-    console.log(deserialized);
     return deserialized;
   }
 });
