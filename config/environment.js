@@ -9,6 +9,9 @@ module.exports = function(environment) {
       'frame-src': "'self' https://*.firebaseio.com",
       'script-src': "'self' 'unsafe-inline' 'unsafe-eval' https://*.firebaseio.com"
     },
+    flashMessageDefaults: {
+      preventDuplicates: true
+    },
     firebase: 'https://dreamerproject.firebaseIO.com',
     torii: {
       sessionServiceName: 'session'

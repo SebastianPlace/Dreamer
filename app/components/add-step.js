@@ -2,6 +2,8 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   store: Ember.inject.service(),
+  flashMessages: Ember.inject.service(),
+
   classNames: ['add-item'],
   isValid: Ember.computed('title',function(){
     if(this.get('title')){
@@ -12,6 +14,7 @@ export default Ember.Component.extend({
 
   actions:{
     addStep(){
+      const flashMessages = Ember.get(this, 'flashMessages');
       if(this.get('isValid')){
         const store = this.get('store');
         const goal = store.peekRecord('goal', this.get('goalId'));
@@ -20,9 +23,13 @@ export default Ember.Component.extend({
           title: this.get('title')
         });
         goal.get('steps').pushObject(step);
-        step.save().then(()=>{
+        step.save()
+        .then(()=>{
           this.set('title','');
-          return goal.save();
+          goal.save();
+        }).catch((err)=>{
+          flashMessages.danger('Whoops. Your step could not be created.');
+          console.error(err);
         });
       }
     }
