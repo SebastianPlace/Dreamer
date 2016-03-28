@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   flashMessages: Ember.inject.service(),
-  classNames: ['col-md-6','habit-col'],
+  classNames: ['col-sm-6','habit-col'],
   isEditing: false,
   //TODO use this function to style habit when it is completed for the day
   //TODO change to if today on datepicker, is complete.
