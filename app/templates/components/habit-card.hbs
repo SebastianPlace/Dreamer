@@ -4,7 +4,7 @@
       <label for="habit-title-edit">Habit Name</label>
       {{input id="habit-title-edit" class="form-control" value=habit.title placeholder="Title"}}
     </div>
-    <label>Active Days</label>
+    <strong>Active Days</strong>
     <div class="row">
       <div class="col-md-10 col-xs-10">
         <div class="day-list">
@@ -18,6 +18,8 @@
         </div>
       </div>
     </div>
+    <strong>Reminders</strong>
+    
 
     <button class="btn btn-primary" {{action "save"}}>Save</button>
     <button class="btn btn-default" {{action "cancel"}}>Cancel</button>
