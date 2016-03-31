@@ -1,12 +1,20 @@
 import Ember from 'ember';
+import moment from 'moment';
 
 export default Ember.Component.extend({
   flashMessages: Ember.inject.service(),
   classNames: ['col-sm-6','habit-col'],
   isEditing: false,
+  today: new Date(),
+  //TODO refactor to seperate datetime-picker component
+  startDate: null,
+  startTime:null,
+  endDate: null,
+  endTime:null,
+
   //TODO use this function to style habit when it is completed for the day
   //TODO change to if today on datepicker, is complete.
-  // isCompleted: Ember.computed.bool('habit.days', function(){
+  // isTodayDone: Ember.computed.bool('habit.days', function(){
   //   const days = this.get('habit.days');
   //   const currentDay= new Date().toDateString();
   //   const today = days.filterBy('date',currentDay);
@@ -14,7 +22,7 @@ export default Ember.Component.extend({
   //     return true;
   //   }
   // }),
-  today: new Date(),
+
 
   //This save is scheduled to run within a separate run loop with a 1 ms wait.
   //See: http://emberjs.com/api/classes/Ember.run.html#method_next
@@ -36,10 +44,27 @@ export default Ember.Component.extend({
     }
   }.observes('habit.hasDirtyAttributes'),
 
+  concatDateTime(date, time){
+    let hours = parseInt(time.substring(0, 2));
+    let minutes = parseInt(time.substring(3, 5));
+    return moment(date).set({
+      'hour':hours,
+      'minute': minutes,
+      'second': 0
+    });
+  },
   actions:{
     addEvent(){
-      
+      let eventObject = {
+        habit: this.habit.get('id'),
+        title: this.habit.get('title'),
+        notes: this.habit.get('notes'),
+        startAt: this.concatDateTime(this.get('startDate'), this.get('startTime')),
+        endAt: this.concatDateTime(this.get('endDate'), this.get('endTime'))
+      };
+      this.get('addEvent')(eventObject);
     },
+
     edit(){
       this.set('isEditing', true);
     },

@@ -4,6 +4,7 @@
       <label for="habit-title-edit">Habit Name</label>
       {{input id="habit-title-edit" class="form-control" value=habit.title placeholder="Title"}}
     </div>
+
     <strong>Active Days</strong>
     <div class="row">
       <div class="col-md-10 col-xs-10">
@@ -21,6 +22,19 @@
     <strong>Reminders</strong>
     <div class="row">
       <div class="col-xs-12">
+        <div class="form-group">
+          <label for="input-startDate">Starts</label>
+          {{bootstrap-datepicker id="input-startDate" value=startDate todayHighlight=true todayBtn=true autoclose=true weekStart=1}}
+
+          <label for="input-startTime">At</label>
+          {{input id="input-startTime" type="time" value=startTime class="form-control"}}
+
+          <label for="input-endDate">Ends</label>
+          {{bootstrap-datepicker id="input-endDate" value=endDate todayHighlight=true todayBtn=true autoclose=true weekStart=1}}
+
+          <label for="input-endTime">At</label>
+          {{input id="input-endTime" type="time" value=endTime class="form-control"}}
+        </div>
         <button class="btn btn-default" {{action "addEvent"}}>Add Event</button>
       </div>
     </div>

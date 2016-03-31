@@ -26,24 +26,16 @@ export default Ember.Controller.extend({
   },
 
   actions:{
-    addEvent(){
-      // const currentUser = Ember.get(this,'session.currentUser.accessToken');
-      // console.log(currentUser);
-
-      // gapi.client.load('calendar', 'v3', this.send('logSomething'));
-      let eventTime = moment('2016-03-31 13:00:00');
-      //TODO event could be the model: event
-      //a habit has many events
-      var event = {
-        'summary': 'Test Event',
-        'location': '800 Howard St., San Francisco, CA 94103',
-        'description': 'Testing Ember google cal',
+    addEvent(eventObject){
+      const event = {
+        'summary': eventObject.title,
+        'description': eventObject.notes,
         'start': {
-          'dateTime': eventTime,
+          'dateTime': eventObject.startAt,
           'timeZone': 'Europe/London'
         },
         'end': {
-          'dateTime': eventTime.clone().add(1, 'hour'),
+          'dateTime': eventObject.endAt,
           'timeZone': 'Europe/London'
         },
         'reminders': {
@@ -54,11 +46,6 @@ export default Ember.Controller.extend({
           ]
         }
       };
-
-      // 'recurrence': [
-      //   'RRULE:FREQ=DAILY;COUNT=2'
-      // ],
-
       var request = gapi.client.calendar.events.insert({
         'calendarId': 'primary',
         'resource': event
@@ -66,7 +53,6 @@ export default Ember.Controller.extend({
 
       request.execute((event) => {
         console.log(event);
-        // appendPre('Event created: ' + event.htmlLink);
       });
     },
 
