@@ -37,6 +37,9 @@ export default Ember.Component.extend({
   }.observes('habit.hasDirtyAttributes'),
 
   actions:{
+    addEvent(){
+      
+    },
     edit(){
       this.set('isEditing', true);
     },

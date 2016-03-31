@@ -9,6 +9,8 @@ export default Ember.Route.extend({
       this.transitionTo('goals');
     }
   },
+  //TODO catch errors
+  //TODO move calendar init to here and call it if signin is success
   actions: {
     signIn: function(provider) {
       this.get("session").open("firebase", { provider: provider}).then((data)=>{

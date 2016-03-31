@@ -4,6 +4,9 @@
     "window",
     "-Promise"
   ],
+  "globals":{
+    "gapi":true
+  },
   "browser": true,
   "boss": true,
   "curly": true,
