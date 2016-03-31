@@ -45,8 +45,8 @@ export default Ember.Component.extend({
   }.observes('habit.hasDirtyAttributes'),
 
   concatDateTime(date, time){
-    let hours = parseInt(time.substring(0, 2));
-    let minutes = parseInt(time.substring(3, 5));
+    const hours = parseInt(time.substring(0, 2));
+    const minutes = parseInt(time.substring(3, 5));
     return moment(date).set({
       'hour':hours,
       'minute': minutes,

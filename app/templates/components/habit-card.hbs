@@ -3,6 +3,9 @@
     <div class="form-group">
       <label for="habit-title-edit">Habit Name</label>
       {{input id="habit-title-edit" class="form-control" value=habit.title placeholder="Title"}}
+
+      <label for="input-notes-edit">Notes</label>
+      {{textarea id="input-notes-edit" class="form-control" value=habit.notes rows="6" placeholder="Notes"}}
     </div>
 
     <strong>Active Days</strong>
@@ -46,6 +49,7 @@
 
   {{else}}
     <a class="habit-link" {{action "edit"}}>{{habit.title}}</a>
+    <p>{{habit.notes}}</p>
     {{bootstrap-datepicker-inline value=habit.days multidate=true todayHighlight=true endDate=today todayBtn=true weekStart=1}}
   {{/if}}
 </div>
