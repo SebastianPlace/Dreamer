@@ -1,5 +1,4 @@
 import DS from 'ember-data';
-//import Ember from 'ember';
 
 export default DS.Model.extend({
   goal: DS.belongsTo('goal'),
@@ -10,5 +9,5 @@ export default DS.Model.extend({
   }),
   days: DS.attr('dates'),
   activeDays: DS.attr(),
-  calendarEvents: DS.hasMany('calendarEvent')
+  calendarEvent: DS.belongsTo('calendarEvent') //one to one relationship with habit
 });

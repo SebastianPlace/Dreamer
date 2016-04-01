@@ -8,9 +8,9 @@ export default Ember.Component.extend({
   today: new Date(),
   //TODO refactor to seperate datetime-picker component
   startDate: null,
-  startTime:null,
+  startTime: null,
   endDate: null,
-  endTime:null,
+  endTime: null,
 
   //TODO use this function to style habit when it is completed for the day
   //TODO change to if today on datepicker, is complete.
@@ -55,12 +55,14 @@ export default Ember.Component.extend({
   },
   actions:{
     addEvent(){
+      //Send eventObject to controllers/goals/detail
       let eventObject = {
         habit: this.habit.get('id'),
         title: this.habit.get('title'),
         notes: this.habit.get('notes'),
         startAt: this.concatDateTime(this.get('startDate'), this.get('startTime')),
-        endAt: this.concatDateTime(this.get('endDate'), this.get('endTime'))
+        endAt: this.concatDateTime(this.get('endDate'), this.get('endTime')),
+        activeDays: this.habit.get('activeDays')
       };
       this.get('addEvent')(eventObject);
     },
@@ -85,7 +87,7 @@ export default Ember.Component.extend({
     delete(){
       const flashMessages = Ember.get(this, 'flashMessages');
       this.habit.destroyRecord().then(()=>{
-        flashMessages.success('Save successful!');
+        flashMessages.success('Habit deleted!');
       }).catch((err) => {
         flashMessages.danger('Whoops. Your habit could not be deleted.');
         console.error(err);

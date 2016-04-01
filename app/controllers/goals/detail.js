@@ -24,8 +24,17 @@ export default Ember.Controller.extend({
       }
     });
   },
+  getActiveDaysString(activeDays){
+    let keys = Object.keys(activeDays);
+    let daysArray = keys.filter(function(key) {
+        return activeDays[key];
+    });
+    return daysArray.toString();
+  },
 
   actions:{
+    //For more info on recurrence see: http://tools.ietf.org/html/rfc5545#section-3.8.5
+    //Create calendar event & save event info to store as calendarEvent
     addEvent(eventObject){
       const event = {
         'summary': eventObject.title,
@@ -38,6 +47,9 @@ export default Ember.Controller.extend({
           'dateTime': eventObject.endAt,
           'timeZone': 'Europe/London'
         },
+        'recurrence': [
+          'RRULE:FREQ=WEEKLY;WKST=MO;BYDAY='+this.getActiveDaysString(eventObject.activeDays),
+        ],
         'reminders': {
           'useDefault': false,
           'overrides': [
@@ -46,7 +58,7 @@ export default Ember.Controller.extend({
           ]
         }
       };
-      var request = gapi.client.calendar.events.insert({
+      let request = gapi.client.calendar.events.insert({
         'calendarId': 'primary',
         'resource': event
       });

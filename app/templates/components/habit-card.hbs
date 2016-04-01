@@ -8,21 +8,7 @@
       {{textarea id="input-notes-edit" class="form-control" value=habit.notes rows="6" placeholder="Notes"}}
     </div>
 
-    <strong>Active Days</strong>
-    <div class="row">
-      <div class="col-md-10 col-xs-10">
-        <div class="day-list">
-          {{#active-day-edit habit=habit day="mon" isActive=habit.activeDays.mon}}M{{/active-day-edit}}
-          {{#active-day-edit habit=habit day="tue" isActive=habit.activeDays.tue}}T{{/active-day-edit}}
-          {{#active-day-edit habit=habit day="wed" isActive=habit.activeDays.wed}}W{{/active-day-edit}}
-          {{#active-day-edit habit=habit day="thu" isActive=habit.activeDays.thu}}T{{/active-day-edit}}
-          {{#active-day-edit habit=habit day="fri" isActive=habit.activeDays.fri}}F{{/active-day-edit}}
-          {{#active-day-edit habit=habit day="sat" isActive=habit.activeDays.sat}}S{{/active-day-edit}}
-          {{#active-day-edit habit=habit day="sun" isActive=habit.activeDays.sun}}S{{/active-day-edit}}
-        </div>
-      </div>
-    </div>
-    <strong>Reminders</strong>
+    <strong>Schedule</strong>
     <div class="row">
       <div class="col-xs-12">
         <div class="form-group">
@@ -41,7 +27,23 @@
         <button class="btn btn-default" {{action "addEvent"}}>Add Event</button>
       </div>
     </div>
+    <strong>Active Days</strong>
+    <p>Select the days you would like to complete you habit on.</p>
+    <div class="row">
+      <div class="col-md-10 col-xs-10">
+        <div class="day-list">
+          {{#active-day-edit habit=habit day="MO" isActive=habit.activeDays.MO}}M{{/active-day-edit}}
+          {{#active-day-edit habit=habit day="TU" isActive=habit.activeDays.TU}}T{{/active-day-edit}}
+          {{#active-day-edit habit=habit day="WE" isActive=habit.activeDays.WE}}W{{/active-day-edit}}
+          {{#active-day-edit habit=habit day="TH" isActive=habit.activeDays.TH}}T{{/active-day-edit}}
+          {{#active-day-edit habit=habit day="FR" isActive=habit.activeDays.FR}}F{{/active-day-edit}}
+          {{#active-day-edit habit=habit day="SA" isActive=habit.activeDays.SA}}S{{/active-day-edit}}
+          {{#active-day-edit habit=habit day="SU" isActive=habit.activeDays.SU}}S{{/active-day-edit}}
+        </div>
+      </div>
+    </div>
 
+    <strong>Reminders</strong>
 
     <button class="btn btn-primary" {{action "save"}}>Save</button>
     <button class="btn btn-default" {{action "cancel"}}>Cancel</button>

@@ -19,13 +19,13 @@ export default Ember.Component.extend({
         const store = this.get('store');
         const goal = store.peekRecord('goal', this.get('goalId'));
         const activeDays = {
-          mon: true,
-          tue: true,
-          wed: true,
-          thu: true,
-          fri: true,
-          sat: true,
-          sun: true
+          MO: true,
+          TU: true,
+          WE: true,
+          TH: true,
+          FR: true,
+          SA: false,
+          SU: false
         };
         const habit = store.createRecord('habit', {
           goal: goal,

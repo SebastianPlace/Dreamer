@@ -8,6 +8,11 @@ export default DS.Model.extend({
   description: DS.attr('string'),//description
   startTime: DS.attr('date'),
   endTime: DS.attr('date'),
+
+  //this is the ID sent back on successful event insertion
+  //use this to edit or delete events
+  //eventId: DS.attr()
+
   //**optional** currently default
   //reminder: DS.attr('number') //number of minutes before startTime
 });
