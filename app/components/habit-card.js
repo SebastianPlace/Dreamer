@@ -75,7 +75,7 @@ export default Ember.Component.extend({
       const flashMessages = Ember.get(this, 'flashMessages');
       this.habit.save()
       .then(() => {
-        flashMessages.success('Habit deleted.');
+        flashMessages.success('Changes saved successfully!');
         this.set('isEditing', false);
       })
       .catch((err) => {
