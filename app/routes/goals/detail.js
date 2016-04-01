@@ -2,9 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
   flashMessages: Ember.inject.service(),
-  beforeModel() {
-   return Ember.$.getScript('https://apis.google.com/js/client.js');
-  },
+  
   actions: {
     save(){
       const flashMessages = Ember.get(this, 'flashMessages');

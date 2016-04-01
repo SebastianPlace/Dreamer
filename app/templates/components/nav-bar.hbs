@@ -15,7 +15,7 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="collapsible-container">
       <div class="navbar-right navbar-text navbar-profile-group">
-        <img src={{session.currentUser.profileImageURL}} alt="Your profile picture." class="img-circle">
+        <img src={{session.currentUser.profileImageURL}} class="img-circle">
         {{session.currentUser.displayName}}
       </div>
       <button {{action "signOut"}} class="btn btn-default navbar-btn navbar-right">Sign out</button>

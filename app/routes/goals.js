@@ -1,6 +1,9 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
+  beforeModel() {
+   return Ember.$.getScript('https://apis.google.com/js/client.js');
+  },
   model() {
     const currentUserGoogleId = this.get('session.currentUser.id');
     const currentUserId = this.store.query('user', { filter: { uid:currentUserGoogleId  }});

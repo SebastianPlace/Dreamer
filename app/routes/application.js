@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
+
   beforeModel: function() {
     return this.get("session").fetch().catch(function() {});
   },
@@ -9,10 +10,11 @@ export default Ember.Route.extend({
       this.transitionTo('goals');
     }
   },
-  //TODO catch errors
-  //TODO move calendar init to here and call it if signin is success
+
   actions: {
     signIn: function(provider) {
+      const flashMessages = Ember.get(this, 'flashMessages');
+
       this.get("session").open("firebase", { provider: provider}).then((data)=>{
         this.store.query('user', { filter: { uid: data.currentUser.id }}).then((existing)=>{
           const user = existing.objectAt(0);
@@ -20,7 +22,10 @@ export default Ember.Route.extend({
             this.store.createRecord('user',{
               uid: data.currentUser.id,
               displayName: data.currentUser.displayName
-            }).save();
+            }).save().catch((err)=>{
+              flashMessages.danger('Whoops. There was a problem setting up your account.');
+              console.error(err);
+            });
           }
         });
         this.transitionTo('goals');
