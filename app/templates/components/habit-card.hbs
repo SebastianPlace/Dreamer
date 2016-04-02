@@ -1,30 +1,43 @@
 <div class="habit-card">
   {{#if isEditing}}
-    <div class="form-group">
-      <label for="habit-title-edit">Habit Name</label>
-      {{input id="habit-title-edit" class="form-control" value=habit.title placeholder="Title"}}
-
-      <label for="input-notes-edit">Notes</label>
-      {{textarea id="input-notes-edit" class="form-control" value=habit.notes rows="4" placeholder="Notes"}}
+    <div class="row">
+      <div class="col-xs-12">
+        <label for="habit-title-edit">Habit Name</label>
+        {{input id="habit-title-edit" class="form-control" value=habit.title placeholder="Title"}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <label for="input-notes-edit">Notes</label>
+        {{textarea id="input-notes-edit" class="form-control" value=habit.notes rows="4" placeholder="Notes"}}
+      </div>
     </div>
 
     <strong>Schedule</strong>
     <!-- <div class="row">
       <div class="col-xs-12"> -->
         <div class="form-group">
-          <label for="input-startDate">Starts</label>
-          {{bootstrap-datepicker id="input-startDate" value=startDate todayHighlight=true todayBtn=true autoclose=true weekStart=1}}
+          <div class="row">
+            <div class="col-xs-12">
+              <label class="label-not-bold" for="input-startDate">Starts</label>
+              {{bootstrap-datepicker id="input-startDate" class="input-datepicker" value=startDate todayHighlight=true todayBtn=true autoclose=true weekStart=1}}
 
-          <label for="input-startTime">At</label>
-          {{input id="input-startTime" type="time" value=startTime class="form-control"}}
+              <label class="label-not-bold" for="input-startTime">At</label>
+              {{input id="input-startTime" type="time" value=startTime}}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
+              <label class="label-not-bold" for="input-endDate">Ends</label>
+              {{bootstrap-datepicker id="input-endDate" class="input-datepicker" value=endDate todayHighlight=true todayBtn=true autoclose=true weekStart=1}}
 
-          <label for="input-endDate">Ends</label>
-          {{bootstrap-datepicker id="input-endDate" value=endDate todayHighlight=true todayBtn=true autoclose=true weekStart=1}}
+              <label class="label-not-bold" for="input-endTime">At</label>
+              {{input id="input-endTime" type="time" value=endTime}}
+            </div>
+          </div>
+          <button class="btn btn-default" {{action "addEvent"}}>Add Event</button>
 
-          <label for="input-endTime">At</label>
-          {{input id="input-endTime" type="time" value=endTime class="form-control"}}
         </div>
-        <button class="btn btn-default" {{action "addEvent"}}>Add Event</button>
       <!-- </div>
     </div> -->
     <strong>Active Days</strong>
@@ -48,7 +61,7 @@
     <button class="btn btn-danger pull-right" {{action "delete"}}><span class="glyphicon glyphicon-trash"></span></button>
 
   {{else}}
-    <a class="habit-link" {{action "edit"}}>{{habit.title}}</a>
+    <a class="habit-title" {{action "edit"}}>{{habit.title}}</a>
     <p>{{habit.notes}}</p>
     {{bootstrap-datepicker-inline value=habit.days multidate=true todayHighlight=true endDate=today todayBtn=true weekStart=1}}
     {{#if isAddingDays}}

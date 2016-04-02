@@ -9,7 +9,7 @@
     &.today{
       font-weight: bold;
       color: $secondary-blue;
-      background-color: white;
+      background-color: $subtle-grey;
       &:hover{
         background-color: $hover-grey !important;
       }
@@ -25,4 +25,7 @@
 .datepicker-inline{
   float: none;
   margin: auto;
+}
+.input-datepicker{
+  width:120px;
 }
