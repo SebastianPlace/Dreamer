@@ -51,5 +51,9 @@
     <a class="habit-link" {{action "edit"}}>{{habit.title}}</a>
     <p>{{habit.notes}}</p>
     {{bootstrap-datepicker-inline value=habit.days multidate=true todayHighlight=true endDate=today todayBtn=true weekStart=1}}
+    {{#if isAddingDays}}
+      <button class="btn btn-primary" {{action "save"}}>Save Days</button>
+      <button class="btn btn-default" {{action "cancel"}}>Cancel</button>
+    {{/if}}
   {{/if}}
 </div>
