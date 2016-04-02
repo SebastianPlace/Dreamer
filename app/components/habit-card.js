@@ -5,16 +5,17 @@ export default Ember.Component.extend({
   flashMessages: Ember.inject.service(),
   classNames: ['col-sm-6','habit-col'],
   isEditing: false,
+  isAddingDays: false,
   today: new Date(),
   //TODO refactor to seperate datetime-picker component
+    //declare vars startAt & endAt here, move startDate etc to component
   startDate: null,
   startTime: null,
   endDate: null,
   endTime: null,
-  isAddingDays: false,
 
   datesDidChange : function() {
-    if(this.get('habit.hasDirtyAttributes')){
+    if(this.get('habit.hasDirtyAttributes') && !this.get('habit.isNew')){
       this.set('isAddingDays', true);
     }
   }.observes('habit.hasDirtyAttributes').on('init'),
@@ -73,7 +74,9 @@ export default Ember.Component.extend({
     },
 
     cancel(){
-      this.habit.rollbackAttributes();
+      if(this.get('habit.hasDirtyAttributes')){
+        this.habit.rollbackAttributes();
+      }
       this.set('isEditing', false);
       this.set('isAddingDays', false);
     },

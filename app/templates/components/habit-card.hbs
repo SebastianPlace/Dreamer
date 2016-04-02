@@ -5,12 +5,12 @@
       {{input id="habit-title-edit" class="form-control" value=habit.title placeholder="Title"}}
 
       <label for="input-notes-edit">Notes</label>
-      {{textarea id="input-notes-edit" class="form-control" value=habit.notes rows="6" placeholder="Notes"}}
+      {{textarea id="input-notes-edit" class="form-control" value=habit.notes rows="4" placeholder="Notes"}}
     </div>
 
     <strong>Schedule</strong>
-    <div class="row">
-      <div class="col-xs-12">
+    <!-- <div class="row">
+      <div class="col-xs-12"> -->
         <div class="form-group">
           <label for="input-startDate">Starts</label>
           {{bootstrap-datepicker id="input-startDate" value=startDate todayHighlight=true todayBtn=true autoclose=true weekStart=1}}
@@ -25,8 +25,8 @@
           {{input id="input-endTime" type="time" value=endTime class="form-control"}}
         </div>
         <button class="btn btn-default" {{action "addEvent"}}>Add Event</button>
-      </div>
-    </div>
+      <!-- </div>
+    </div> -->
     <strong>Active Days</strong>
     <p>Select the days you would like to complete you habit on.</p>
     <div class="row">

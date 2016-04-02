@@ -52,7 +52,9 @@ export default Ember.Controller.extend({
       this.set('isEditing', true);
     },
     cancel(){
-      this.model.rollbackAttributes();
+      if (this.get('model.hasDirtyAttributes')) {
+        this.model.rollbackAttributes();
+      }
       this.set('isEditing', false);
     },
     save(){
