@@ -15,7 +15,9 @@ body{
   background-color: $global-background;
   padding-top: 5em;
 }
-
+a{
+  cursor: pointer;
+}
 *:focus, *:active, *:focus:active{
   outline:none !important;
 }

@@ -1,3 +1,3 @@
 {{#each habits as |habit|}}
-  {{habit-card habit=habit addEvent=(action 'addEvent')}}
+  {{habit-card habit=habit addEvent=(action 'addEvent') deleteEvent=(action 'deleteEvent')}}
 {{/each}}

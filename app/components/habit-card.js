@@ -14,12 +14,6 @@ export default Ember.Component.extend({
   endDate: null,
   endTime: null,
 
-  datesDidChange : function() {
-    if(this.get('habit.hasDirtyAttributes') && !this.get('habit.isNew')){
-      this.set('isAddingDays', true);
-    }
-  }.observes('habit.hasDirtyAttributes').on('init'),
-
   concatDateTime(date, time){
     const hours = parseInt(time.substring(0, 2));
     const minutes = parseInt(time.substring(3, 5));
@@ -29,11 +23,28 @@ export default Ember.Component.extend({
       'second': 0
     });
   },
+
+  datesDidChange : function() {
+    if(this.get('habit.hasDirtyAttributes') && !this.get('habit.isNew')){
+      this.set('isAddingDays', true);
+    }
+  }.observes('habit.hasDirtyAttributes').on('init'),
+
   actions:{
+    deleteEvent(){
+      let eventObject = {
+        habitId: this.habit.get('id'),
+        calendarEventId: this.habit.get('calendarEvent.id'),//Event Firebase ID
+        eventId: this.habit.get('calendarEvent.eventId'),//Event Google Cal ID
+      };
+      this.get('deleteEvent')(eventObject);
+    },
+
+    //Call this after checking is done
     addEvent(){
       //Send eventObject to controllers/goals/detail
       let eventObject = {
-        habit: this.habit.get('id'),
+        habitId: this.habit.get('id'),
         title: this.habit.get('title'),
         notes: this.habit.get('notes'),
         startAt: this.concatDateTime(this.get('startDate'), this.get('startTime')),

@@ -2,63 +2,68 @@
   {{#if isEditing}}
     <div class="row">
       <div class="col-xs-12">
-        <label for="habit-title-edit">Habit Name</label>
-        {{input id="habit-title-edit" class="form-control" value=habit.title placeholder="Title"}}
+        <label>Habit Name</label>
+        {{input class="form-control" value=habit.title placeholder="Title"}}
       </div>
     </div>
     <div class="row">
       <div class="col-xs-12">
-        <label for="input-notes-edit">Notes</label>
-        {{textarea id="input-notes-edit" class="form-control" value=habit.notes rows="4" placeholder="Notes"}}
+        <label>Notes</label>
+        {{textarea class="form-control" value=habit.notes rows="4" placeholder="Notes"}}
       </div>
     </div>
 
     <strong>Schedule</strong>
-    <!-- <div class="row">
-      <div class="col-xs-12"> -->
-        <div class="form-group">
-          <div class="row">
-            <div class="col-xs-12">
-              <label class="label-not-bold" for="input-startDate">Starts</label>
-              {{bootstrap-datepicker id="input-startDate" class="input-datepicker" value=startDate todayHighlight=true todayBtn=true autoclose=true weekStart=1}}
+    {{#if habit.calendarEvent}}
+      You have a schedule setup.
+      <a {{action 'deleteEvent'}}>Delete Schedule</a>
+    {{else}}
+      <div class="form-group">
+        <div class="row">
+          <div class="col-xs-12">
+            <label class="label-not-bold">Starts</label>
+            {{bootstrap-datepicker  class="input-datepicker" value=startDate format="dd/mm/yy" todayHighlight=true todayBtn=true autoclose=true weekStart=1}}
 
-              <label class="label-not-bold" for="input-startTime">At</label>
-              {{input id="input-startTime" type="time" value=startTime}}
-            </div>
+            <label class="label-not-bold">At</label>
+            {{input type="time" value=startTime}}
           </div>
-          <div class="row">
-            <div class="col-xs-12">
-              <label class="label-not-bold" for="input-endDate">Ends</label>
-              {{bootstrap-datepicker id="input-endDate" class="input-datepicker" value=endDate todayHighlight=true todayBtn=true autoclose=true weekStart=1}}
-
-              <label class="label-not-bold" for="input-endTime">At</label>
-              {{input id="input-endTime" type="time" value=endTime}}
-            </div>
-          </div>
-          <button class="btn btn-default" {{action "addEvent"}}>Add Event</button>
-
         </div>
-      <!-- </div>
-    </div> -->
-    <strong>Active Days</strong>
-    <p>Select the days you would like to complete you habit on.</p>
-    <div class="row">
-      <div class="col-md-10 col-xs-10">
-        <div class="day-list">
-          {{#active-day-edit habit=habit day="MO" isActive=habit.activeDays.MO}}M{{/active-day-edit}}
-          {{#active-day-edit habit=habit day="TU" isActive=habit.activeDays.TU}}T{{/active-day-edit}}
-          {{#active-day-edit habit=habit day="WE" isActive=habit.activeDays.WE}}W{{/active-day-edit}}
-          {{#active-day-edit habit=habit day="TH" isActive=habit.activeDays.TH}}T{{/active-day-edit}}
-          {{#active-day-edit habit=habit day="FR" isActive=habit.activeDays.FR}}F{{/active-day-edit}}
-          {{#active-day-edit habit=habit day="SA" isActive=habit.activeDays.SA}}S{{/active-day-edit}}
-          {{#active-day-edit habit=habit day="SU" isActive=habit.activeDays.SU}}S{{/active-day-edit}}
+        <div class="row">
+          <div class="col-xs-12">
+            <label class="label-not-bold">Ends</label>
+            {{bootstrap-datepicker class="input-datepicker" value=endDate format="dd/mm/yy" todayHighlight=true todayBtn=true autoclose=true weekStart=1}}
+
+            <label class="label-not-bold">At</label>
+            {{input type="time" value=endTime}}
+          </div>
+        </div>
+        <button class="btn btn-default" {{action "addEvent"}}>Add Event</button>
+      </div>
+
+      <strong>Active Days</strong>
+      <p>Select the days you would like to complete you habit on.</p>
+      <div class="row">
+        <div class="col-md-10 col-xs-10">
+          <div class="day-list">
+            {{#active-day-edit habit=habit day="MO" isActive=habit.activeDays.MO}}M{{/active-day-edit}}
+            {{#active-day-edit habit=habit day="TU" isActive=habit.activeDays.TU}}T{{/active-day-edit}}
+            {{#active-day-edit habit=habit day="WE" isActive=habit.activeDays.WE}}W{{/active-day-edit}}
+            {{#active-day-edit habit=habit day="TH" isActive=habit.activeDays.TH}}T{{/active-day-edit}}
+            {{#active-day-edit habit=habit day="FR" isActive=habit.activeDays.FR}}F{{/active-day-edit}}
+            {{#active-day-edit habit=habit day="SA" isActive=habit.activeDays.SA}}S{{/active-day-edit}}
+            {{#active-day-edit habit=habit day="SU" isActive=habit.activeDays.SU}}S{{/active-day-edit}}
+          </div>
         </div>
       </div>
-    </div>
+    {{/if}}
 
-    <button class="btn btn-primary" {{action "save"}}>Save</button>
-    <button class="btn btn-default" {{action "cancel"}}>Cancel</button>
-    <button class="btn btn-danger pull-right" {{action "delete"}}><span class="glyphicon glyphicon-trash"></span></button>
+    <div class="row">
+      <div class="col-xs-12">
+        <button class="btn btn-primary" {{action "save"}}>Save</button>
+        <button class="btn btn-default" {{action "cancel"}}>Cancel</button>
+        <button class="btn btn-danger pull-right" {{action "delete"}}><span class="glyphicon glyphicon-trash"></span></button>
+      </div>
+    </div>
 
   {{else}}
     <a class="habit-title" {{action "edit"}}>{{habit.title}}</a>

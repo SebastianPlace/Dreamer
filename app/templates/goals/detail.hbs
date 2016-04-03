@@ -34,6 +34,6 @@
   <!-- Habit List -->
   <h3>Habits</h3>
   {{add-habit goalId=model.id}}
-  {{habit-list habits=model.habits addEvent=(action 'addEvent')}}
+  {{habit-list habits=model.habits addEvent=(action 'addEvent') deleteEvent=(action 'deleteEvent')}}
   <button class="btn btn-primary" {{action "edit"}}>Edit Goal</button>
 {{/if}}

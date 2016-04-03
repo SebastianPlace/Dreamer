@@ -7,5 +7,8 @@ export default Ember.Component.extend({
     addEvent(eventObject){
       this.get('addEvent')(eventObject);
     },
+    deleteEvent(eventObject){
+      this.get('deleteEvent')(eventObject);
+    },
   }
 });

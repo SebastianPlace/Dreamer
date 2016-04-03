@@ -11,11 +11,37 @@ export default Ember.Controller.extend({
     });
     return daysArray.toString();
   },
+  createEventRecord(eventId, eventObject){
+    const flashMessages = Ember.get(this, 'flashMessages');
+    const habit = this.store.peekRecord('habit', eventObject.habitId);
+    const calendarEvent = this.store.createRecord('calendarEvent', {
+      habit: habit,
+      eventId: eventId,
+      title: eventObject.title,
+      description: eventObject.notes,
+      startAt: new Date(eventObject.startAt),
+      endAt: new Date(eventObject.endAt)
+    });
+    calendarEvent.save()
+    .then((resp)=>{
+      habit.get('calendarEvent').set(resp.id);
+      habit.save();
+      flashMessages.success('Your schedule was successfully saved!');
+    }).catch((err)=>{
+      flashMessages.danger('Whoops. Your event could not be created.');
+      console.error(err);
+    });
 
+  },
+  // editEventRecord(eventId, eventObject){
+  //
+  // },
   actions:{
     //For more info on recurrence see: http://tools.ietf.org/html/rfc5545#section-3.8.5
     //Create calendar event & save event info to store as calendarEvent
     addEvent(eventObject){
+      //Check if event exists and call
+        //If true: call editEventRecord()
       const event = {
         'summary': eventObject.title,
         'description': eventObject.notes,
@@ -44,7 +70,31 @@ export default Ember.Controller.extend({
       });
 
       request.execute((event) => {
-        console.log(event);
+        //create record in store
+        this.createEventRecord(event.id, eventObject);
+      });
+    },
+    deleteEvent(eventObject){
+      const flashMessages = Ember.get(this, 'flashMessages');
+      const habit = this.store.peekRecord('habit', eventObject.habitId);
+      const calendarEvent = this.store.peekRecord('calendarEvent', eventObject.calendarEventId);
+
+      //DELETE from calendar
+      let request = gapi.client.calendar.events.delete({
+        'calendarId': 'primary',
+        'eventId': eventObject.eventId
+      });
+      request.execute((resp) => {
+        console.log(resp);
+      });
+
+      //DELETE from store
+      calendarEvent.destroyRecord().then(()=>{
+        habit.set('calendarEvent', undefined);
+        habit.save();
+      }).catch((err)=>{
+        flashMessages.danger('Whoops. Schedule could not be delete.');
+        console.error(err);
       });
     },
 
