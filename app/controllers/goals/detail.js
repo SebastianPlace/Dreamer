@@ -33,15 +33,11 @@ export default Ember.Controller.extend({
     });
 
   },
-  // editEventRecord(eventId, eventObject){
-  //
-  // },
+
   actions:{
     //For more info on recurrence see: http://tools.ietf.org/html/rfc5545#section-3.8.5
     //Create calendar event & save event info to store as calendarEvent
     addEvent(eventObject){
-      //Check if event exists and call
-        //If true: call editEventRecord()
       const event = {
         'summary': eventObject.title,
         'description': eventObject.notes,

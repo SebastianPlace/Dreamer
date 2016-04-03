@@ -25,7 +25,7 @@ export default Ember.Component.extend({
   },
 
   datesDidChange : function() {
-    if(this.get('habit.hasDirtyAttributes') && !this.get('habit.isNew')){
+    if(this.get('habit.hasDirtyAttributes') && !this.get('habit.isNew') && !this.get('habit.isSaving')){
       this.set('isAddingDays', true);
     }
   }.observes('habit.hasDirtyAttributes').on('init'),
@@ -62,6 +62,9 @@ export default Ember.Component.extend({
 
     save(){
       const flashMessages = Ember.get(this, 'flashMessages');
+      if(!this.habit.get('calendarEvent.content')){
+        this.send('addEvent');
+      }
       this.habit.save()
       .then(() => {
         flashMessages.success('Changes saved successfully!');
