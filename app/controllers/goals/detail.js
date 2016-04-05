@@ -109,6 +109,7 @@ export default Ember.Controller.extend({
     },
     delete(){
       //TODO create a modal which asks if you want to delete (forgiving UI)
+      this.set('isEditing', false);
       return true;
     },
 

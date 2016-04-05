@@ -30,6 +30,17 @@ export default Ember.Component.extend({
     }
   }.observes('habit.hasDirtyAttributes').on('init'),
 
+  eventIsInput(){
+    const hasStartTime = this.get('startTime');
+    const hasStartDate = this.get('startDate');
+    const hasEndTime = this.get('endTime');
+    const hasEndDate = this.get('endDate');
+    if (hasStartTime && hasStartDate && hasEndTime && hasEndDate) {
+      return true;
+    }else {
+      return false;
+    }
+  },
   actions:{
     deleteEvent(){
       let eventObject = {
@@ -62,7 +73,8 @@ export default Ember.Component.extend({
 
     save(){
       const flashMessages = Ember.get(this, 'flashMessages');
-      if(!this.habit.get('calendarEvent.content')){
+
+      if(!this.habit.get('calendarEvent.content') && this.eventIsInput()){
         this.send('addEvent');
       }
       this.habit.save()
