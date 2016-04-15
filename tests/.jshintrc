@@ -23,6 +23,9 @@
     "currentPath",
     "currentRouteName"
   ],
+  "globals":{
+    "gapi":true
+  },
   "node": false,
   "browser": false,
   "boss": true,
