@@ -6,19 +6,6 @@ moduleForComponent('add-step', 'Integration | Component | add step', {
 });
 
 test('it renders', function(assert) {
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });"
-
   this.render(hbs`{{add-step}}`);
-
-  assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:"
-  this.render(hbs`
-    {{#add-step}}
-      template block text
-    {{/add-step}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
+  assert.equal(this.$().text().trim(), 'Add Step');
 });
