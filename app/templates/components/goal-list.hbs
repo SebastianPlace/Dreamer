@@ -1,6 +1,5 @@
 {{#if goals}}
   <ul class="nav nav-pills nav-stacked">
-
     {{#each goals as |goal|}}
       <li>{{#link-to "goals.detail" goal.id}}{{goal.title}}{{/link-to}}</li>
     {{/each}}
