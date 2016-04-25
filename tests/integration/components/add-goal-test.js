@@ -16,6 +16,18 @@ test('it renders', function(assert) {
   assert.equal(this.$().text().trim(), 'Add Goal');
 });
 
+test('it adds a valid goal', function(assert) {
+
+  // Set any properties with this.set('myProperty', 'value');
+  // Handle any actions with this.on('myAction', function(val) { ... });" + EOL + EOL +
+
+  this.render(hbs`{{habit-card}}`);
+  //add text to input
+  //click button
+  //check that the value has been added to the store?
+  assert.equal(this.$().text().trim(), '');
+});
+
 //TODO: test that goal is saved in store
 // test('goal is saved to store on button click', function(assert){
 //   assert.expect(1);

@@ -14,6 +14,14 @@ export default Ember.Component.extend({
   endDate: null,
   endTime: null,
 
+  isValid: Ember.observer('habit.title', function(){
+    let title = this.get('habit.title');
+    if(!title || title === null || title === undefined || title ==='' || title ===" "){
+      return false;
+    }
+    return true;
+  }),
+
   concatDateTime(date, time){
     const hours = parseInt(time.substring(0, 2));
     const minutes = parseInt(time.substring(3, 5));
@@ -40,6 +48,18 @@ export default Ember.Component.extend({
     }else {
       return false;
     }
+  },
+  eventIsValid(){
+    //start date IS BEFORE end date
+    if(this.eventIsInput()){
+      let startDate = this.concatDateTime(this.get('startDate'), this.get('startTime'));
+      let endDate = this.concatDateTime(this.get('endDate'), this.get('endTime'));
+      if (endDate.isAfter(startDate)){
+        console.log("This is valid");
+        return true;
+      }
+    }
+    return false;
   },
   actions:{
     deleteEvent(){
@@ -73,20 +93,27 @@ export default Ember.Component.extend({
 
     save(){
       const flashMessages = Ember.get(this, 'flashMessages');
-
-      if(!this.habit.get('calendarEvent.content') && this.eventIsInput()){
+      console.log(this.eventIsValid());
+      if(!this.habit.get('calendarEvent.content') && this.eventIsValid()){
         this.send('addEvent');
+      }else{
+        flashMessages.danger('Please enter valid dates.');
       }
-      this.habit.save()
-      .then(() => {
-        flashMessages.success('Changes saved successfully!');
-        this.set('isEditing', false);
-        this.set('isAddingDays', false);
-      })
-      .catch((err) => {
-        flashMessages.danger('Whoops. Your changes could not be saved.');
-        console.error(err);
-      });
+      if(this.isValid()){
+        this.habit.save()
+        .then(() => {
+          flashMessages.success('Changes saved successfully!');
+          this.set('isEditing', false);
+          this.set('isAddingDays', false);
+        })
+        .catch((err) => {
+          flashMessages.danger('Whoops. Your changes could not be saved.');
+          console.error(err);
+        });
+      }else{
+        flashMessages.danger('Habit title must not be blank.');
+      }
+
     },
 
     delete(){

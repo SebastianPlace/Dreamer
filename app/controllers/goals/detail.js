@@ -3,6 +3,13 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
   isEditing: false,
   flashMessages: Ember.inject.service(),
+  isValid: Ember.observer('model.title', function(){
+    let title = this.get('model.title');
+    if(!title || title === null || title === undefined || title ==='' || title ===" "){
+      return false;
+    }
+    return true;
+  }),
 
   getActiveDaysString(activeDays){
     let keys = Object.keys(activeDays);
@@ -104,8 +111,14 @@ export default Ember.Controller.extend({
       this.set('isEditing', false);
     },
     save(){
-      this.set('isEditing', false);
-      return true;
+      const flashMessages = Ember.get(this, 'flashMessages');
+      if(!this.isValid()){
+        flashMessages.danger('The goal title cannot be blank.');
+      }
+      if(this.isValid()){
+        this.set('isEditing', false);
+        return true;
+      }
     },
     delete(){
       //TODO create a modal which asks if you want to delete (forgiving UI)
